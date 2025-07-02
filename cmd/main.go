@@ -13,8 +13,8 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
+	data, err := stdin.GetInput()
 
-	clpboard := clipboard.NewClipboard()
+	clipboard.Save(data)
 
-	clpboard.Save(data)
 }

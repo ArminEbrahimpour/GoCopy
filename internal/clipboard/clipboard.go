@@ -2,29 +2,31 @@ package clipboard
 
 import (
 	"fmt"
+
+	"golang.design/x/clipboard"
 )
-
-type clipboard interface{}
-
-func NewClipboard() *clipboard {
-	err := clipboard.Init()
-	if err != nil {
-		fmt.Printf("error in initialization of clipboard")
-		return nil
-	}
-
-	return &clipboard
-}
 
 func Save(data []string) {
 
+	err := clipboard.Init()
+	if err != nil {
+		fmt.Printf("error in initialization of clipboard: %s", err)
+		return
+	}
+
 	for _, val := range data {
-		c.Write(c.FmtText, []byte(val))
+		clipboard.Write(clipboard.FmtText, []byte(val))
 	}
 
 }
 
-func (c *clipboard) Paste() {
+func Paste() {
 
-	c.Read(c.FmtText)
+	err := clipboard.Init()
+	if err != nil {
+		fmt.Printf("error in initialization of clipboard: %s", err)
+		return
+	}
+
+	clipboard.Read(clipboard.FmtText)
 }

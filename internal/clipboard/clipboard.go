@@ -2,31 +2,34 @@ package clipboard
 
 import (
 	"fmt"
+	"strings"
 
 	"golang.design/x/clipboard"
 )
 
-func Save(data []string) {
+func Start() {
 
 	err := clipboard.Init()
+
 	if err != nil {
-		fmt.Printf("error in initialization of clipboard: %s", err)
+		fmt.Println("error in initialization of clipboard: %s", err)
 		return
 	}
+}
 
-	for _, val := range data {
-		clipboard.Write(clipboard.FmtText, []byte(val))
-	}
+func Save(data []string) {
+	/*
+		for _, val := range data {
+			what := clipboard.Write(clipboard.FmtText, []byte(val))
+			fmt.Println(what)
+		}
+	*/
+	joined := strings.Join(data, "\n")
+	clipboard.Write(clipboard.FmtText, []byte(joined))
 
 }
 
 func Paste() {
-
-	err := clipboard.Init()
-	if err != nil {
-		fmt.Printf("error in initialization of clipboard: %s", err)
-		return
-	}
-
-	clipboard.Read(clipboard.FmtText)
+	data := clipboard.Read(clipboard.FmtText)
+	fmt.Println(string(data))
 }

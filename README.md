@@ -14,7 +14,7 @@ sudo cp gocopy /usr/local/bin
 # example
 ls / | gocopy -c
 
-## go somewhere you want and press ctrl+v and you see the clipboard saved the 
+## go anywhere you want and press ctrl+v and you see the clipboard saved the 
 
 ```
 ### notes:

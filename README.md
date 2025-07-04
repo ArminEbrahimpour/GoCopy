@@ -6,6 +6,8 @@ git clone https://github.com/ArminEbrahimpour/GoCopy
 
 cd GoCopy/cmd
 
+go mod download
+
 go build -o gocopy
 
 # copying to the /usr/local/bin 
